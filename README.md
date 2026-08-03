@@ -79,6 +79,8 @@ pyflow_omni/
 
 *(Replace the image paths below with actual screenshots of your app once uploaded to the `assets/` folder)*
 
+<img width="1730" height="925" alt="PyFlow Omni Main Dashboard" src="https://github.com/user-attachments/assets/c27f8689-d66f-447e-b973-e3017e3948a5" />
+
 ---
 
 ## 🚀 Installation & Usage Guidelines
@@ -120,7 +122,7 @@ pip install -e .
 
 For general Windows users, you don't need Python installed. Just use our standalone installer!
 
-1. Go to the [Releases](https://www.google.com/search?q=%23) page of this GitHub repository.
+1. Go to the [Releases](https://github.com/mmizan85/PyFlow-Omni/releases/tag/v1.0.0) page of this GitHub repository.
 2. Download the latest `PyFlow-Omni-Setup-v1.0.0.exe` file.
 3. Run the installer and follow the on-screen instructions.
 4. Ensure you check the **"Add 'pfo' to System PATH"** box during installation.
