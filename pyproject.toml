@@ -1,0 +1,53 @@
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pyflow-omni"
+version = "1.0.0"
+description = "Hybrid CLI/TUI downloader — aria2c for files/torrents/magnets, yt-dlp for media extraction, one SmartRouter deciding which."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "Mizanur Rahman" }]
+keywords = ["aria2", "yt-dlp", "downloader", "tui", "textual", "torrent"]
+classifiers = [
+    "Environment :: Console",
+    "Environment :: Console :: Curses",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Internet :: File Transfer Protocol (FTP)",
+    "Topic :: Multimedia :: Video",
+]
+dependencies = [
+    "textual>=0.58.0",
+    "rich>=13.7.0",
+    "aiohttp>=3.9.0",
+    "aiofiles>=23.2.0",
+    "pyperclip>=1.8.2",
+    "yt-dlp>=2024.4.4",
+    "click>=8.1.7",
+    "PyYAML>=6.0.1",
+    "psutil>=5.9.8",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0.0", "pytest-asyncio>=0.23.0"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+markers = [
+    "network: requires real network egress to the public internet (not just package registries)",
+]
+
+[project.scripts]
+pyflow-omni = "pyflow_omni.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["pyflow_omni*"]
+
+[tool.setuptools.package-data]
+pyflow_omni = ["tui/*.tcss", "assets/*"]

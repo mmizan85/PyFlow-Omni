@@ -1,0 +1,170 @@
+/* PyFlow Omni — deep-dark theme with electric-blue / vibrant-green accents.
+   Colors themselves come from the registered Theme in app.py (so $background,
+   $primary, $success etc. resolve to the palette); this file is layout +
+   the "glassmorphism" approximation (translucent panel fills, soft borders)
+   a terminal can actually render. */
+
+Screen {
+    background: $background;
+}
+
+/* Textual's Horizontal/Vertical default to height:1fr. That's fine as a
+   sole top-level container filling a Screen, but every *row* in this app
+   (Label+Input pairs, button rows) is a Horizontal nested inside a
+   VerticalScroll alongside many siblings — all of them fighting over the
+   same limited flexible-height budget causes each row to collapse to ~1
+   row tall, clipping its 3-row Input/Switch children down to a sliver of
+   their top border with no visible content. This is why every multi-field
+   row (paths, proxy, aria2 defaults, bandwidth rule, clip range, Quick
+   Config) rendered broken. Rows should size to their content instead. */
+
+Horizontal {
+    height: auto;
+}
+
+#app-header-row {
+    height: 1;
+    dock: top;
+    background: $panel 60%;
+}
+
+/* Translucent "glass" containers used across screens for grouped content. */
+
+.glass-panel {
+    background: $panel 55%;
+    border: round $primary 40%;
+    padding: 1 2;
+    margin: 1;
+}
+
+.glass-panel:focus-within {
+    border: round $primary;
+}
+
+.section-title {
+    text-style: bold;
+    color: $primary;
+    padding-bottom: 1;
+}
+
+.hint-text {
+    color: $text-muted;
+    text-style: italic;
+}
+Button {
+    min-width: 4;
+    min-height: 3;
+    border: round $primary 60% ;
+}
+.accent-button { 
+    color: $foreground;
+    
+}
+
+.accent-button:hover {
+    background: $primary-lighten-1;
+    margin: 0;
+
+}
+
+.success-button {
+    background: $success;
+    color: $foreground;
+}
+
+
+
+Input {
+    border: round $primary 60% ;
+    margin-bottom: 1;
+}
+
+/* Input defaults to width: 100%, which — inside any Horizontal row — claims
+   the whole row and pushes sibling Buttons/Labels out of the visible area.
+   Every screen in this app puts Inputs in Horizontal rows next to Labels or
+   Buttons, so this is a global fix rather than a per-screen one. */
+Horizontal > Input {
+    width: 1fr;
+}
+
+Horizontal > Label {
+    width: auto;
+    content-align: left middle;
+    padding: 0 1;
+}
+
+Input:focus {
+    border: round $primary;
+}
+
+ProgressBar > .bar--complete {
+    color: $success;
+}
+
+ProgressBar > .bar--bar {
+    color: $primary;
+}
+
+#recent-select {
+    margin-bottom: 1;
+    border: round $primary 50%;  
+}
+
+DataTable {
+    background: $surface 70%;
+}
+
+RichLog {
+    background: $surface 70%;
+    border: round $panel;
+    padding: 0 1;
+}
+
+.dim-footer-note {
+    color: $text-muted;
+    height: 1;
+    padding: 0 1;
+}
+
+/* Docked action bar on GlobalConfigScreen: Save/Cancel stay reachable
+   without scrolling, regardless of terminal height or how many settings
+   rows are above them. */
+
+#settings-actionbar {
+    dock: bottom;
+    height: 4;
+    background: $panel;
+    border-top: solid $primary 40%;
+    padding: 0 1;
+}
+
+#settings-scroll {
+    height: 1fr;
+}
+
+/* Dashboard stat-card row: five compact rounded panels sharing the row
+   evenly. Static isn't covered by the Horizontal>Input/Label width rules
+   above, so it needs its own — otherwise every card would default to
+   width:auto and just stack at their natural (near-zero) content width. */
+#stat-cards {
+    height: 5;
+    margin-bottom: 1;
+}
+
+.stat-card {
+    width: 1fr;
+    height: 5;
+    margin: 0 1 0 0;
+    padding: 1;
+    text-align: center;
+    background: $panel 70%;
+    border: round $primary 50%;
+}
+
+.stat-card-ok {
+    border: round $success 60%;
+}
+
+.stat-card-fail {
+    border: round $error 60%;
+}
