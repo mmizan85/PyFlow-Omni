@@ -1,6 +1,7 @@
 <div align="center">
   <!-- Project Logo / Icon Placeholder -->
-  <img src="assets/logo.png" alt="PyFlow Omni Logo" width="150" height="150">
+  
+  <img width="120" height="120" alt="Project Logo" src="https://github.com/user-attachments/assets/1e4de508-c49a-4078-9b0e-42e0ba9e8a2a" />
 
   # 🚀 PyFlow Omni
 
